@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sign Up and Log In</title>
+<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container" id="container">
+<div class="form-container sign-up-container">
+
+<form action="register" method="post">
+    {% csrf_token %}
+	<h2>Create Account</h2>
+	<input type="text" name="name" placeholder="Name">
+	<input type="email" name="email" placeholder="Email">
+	<input type="password" name="password" placeholder="Password">
+	<button type="submit" value ="register"/>Sign Up</button>
+	
+</form>
+</div>
+<div class="form-container sign-in-container">
+	<form method="post">
+	 {% csrf_token %}
+	 <div>
+{% for message in messages  %}
+<h2>{{message}}</h2>
+{% endfor %}
+</div>
+	<h1>Student</h1>
+    <br>
+		<h2>Log In</h2>
+         
+	<input type="email" name="email1" placeholder="Email">
+	<input type="password" name="password1" placeholder="Password">
+	<a href="/stuchangepass">Change password</a>
+	<button type="submit" value ="login" />Log In</button>
+	
+	</form>
+	{% if messages %}
+  
+  <h2>{{messages|upper}}</h2>
+
+  {% endif %}
+</div>
+<div class="overlay-container">
+	<div class="overlay">
+		<div class="overlay-panel overlay-left">
+		<h3>Academic Tracker</h3>
+			<h4>Welcome Back!</h4>
+			<br>
+			<p>To stay connected with us please login with your personal info<p>
+			<button class="ghost" id="logIn">Log In</button>
+		</div>
+		<div class="overlay-panel overlay-right">
+		<h3>Academic Tracker</h3>
+		<br>
+			<h4>Hello, Friend!</h4>
+			<p>Enter your details and start your journey with us!<p>
+			<button class="ghost" id="signUp">Sign Up</button>
+		</div>
+	</div>
+</div>
+</div>
+
+<script type="text/javascript">
+	const signUpButton = document.getElementById('signUp');
+	const logInButton = document.getElementById('logIn');
+	const container = document.getElementById('container');
+
+	signUpButton.addEventListener('click', () => {
+		container.classList.add("right-panel-active");
+	});
+	logInButton.addEventListener('click', () => {
+		container.classList.remove("right-panel-active");
+	});
+</script>
+</body>
+</html>

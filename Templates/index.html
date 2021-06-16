@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    
+    <!--====== Title ======-->
+    <title>hello</title>
+    
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+       
+        
+    <!--====== Bootstrap CSS ======-->
+    <link rel="stylesheet" href="static/bootstrap.min.css">
+    
+    
+    <!--====== Style CSS ======-->
+    <link rel="stylesheet" href="static/style.css">
+    
+</head>
+
+<body>
+   
+    <!--====== PRELOADER PART START ======-->
+
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--====== PRELOADER PART ENDS ======-->
+    
+    
+
+    <!--====== NAVBAR TWO PART ENDS ======-->
+    
+    <!--====== SLIDER PART START ======-->
+
+    <section id="home" class="slider_area">
+        
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="slider-content">
+                                    <h1 class="title" align="center">  Hello!</h1>
+                                   <form method="POST" enctype="multipart/form-data" align="center" id="csv">
+                                   {% csrf_token %}
+                                   <label class="label-input100"> subjectname: </label>   
+                                   <input  type="text" name="subjectname" placeholder="subjectname" size="15" required />    
+                                        <input type="file" name="myfile">
+                                        <button type="submit" class="main-btn rounded-one">UPLOAD</button>
+                                   
+                                    </form>
+                                </div>
+                            </div>
+                        </div> <!-- row -->
+                    </div> <!-- container -->
+                    
+                </div> <!-- carousel-item -->
+
+                
+                    </div> <!-- container -->
+
+
+
+<!--====== Jquery js ======-->
+    <script src="static/vendor/jquery-1.12.4.min.js"></script>
+    <script src="static/vendor/modernizr-3.7.1.min.js"></script>
+    
+    <!--====== Bootstrap js ======-->
+    <script src="static/vendor/popper.min.js"></script>
+    <script src="static/vendor/bootstrap.min.js"></script>
+    
+    <!--====== Main js ======-->
+    <script src="static/main.js"></script>
+    
+</body>
+
+</html>

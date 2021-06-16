@@ -1,0 +1,63 @@
+{% load static %} 
+<html>
+<body>  
+<div class="container">  
+<center><h1> Student Registeration Form</h1></center><hr>  
+<form method="post"> 
+ {% csrf_token %}  
+
+<!--select name="{{student.name}}"  multiple required-->
+  {% for student in names %}
+ 
+   <input type = "checkbox" name = "{{student.name}}" value = "{{student.id}}">{{student.name}}
+  {% endfor %}
+ 
+<!--option value="{{student.id}}">{{student.name}}</option-->   
+<!--/select--> 
+<!--input type="text" name="studentname" placeholder= "studentname" size="15" required /--><br>
+
+<label> subjectname: </label>   
+<input type="text" name="subjectname1" placeholder="subjectname1" size="15" required />    
+<label> marks: </label>    
+<input type="text" name="marks1" placeholder="marks1" size="15"required />
+<label> totalmarks: </label>    
+<input type="text" name="totalmarks1" placeholder="totalmarks1" size="15"required />   
+ <br> 
+ 
+ <label> subjectname: </label>   
+<input type="text" name="subjectname2" placeholder="subjectname2" size="15" >   
+<label> marks: </label>    
+<input type="text" name="marks2" placeholder="marks2" size="15">
+<label> totalmarks: </label>    
+<input type="text" name="totalmarks2" placeholder="totalmarks2" size="15">    
+ <br> 
+ 
+ <label> subjectname: </label>   
+<input type="text" name="subjectname3" placeholder="subjectname3" size="15" >   
+<label> marks: </label>    
+<input type="text" name="marks3" placeholder="marks3" size="15">   
+ <label> totalmarks: </label>    
+<input type="text" name="totalmarks3" placeholder="totalmarks3" size="15"> 
+ <br> 
+ 
+ <label> subjectname: </label>   
+<input type="text" name="subjectname4" placeholder="subjectname4" size="15">   
+<label> marks: </label>    
+<input type="text" name="marks4" placeholder="marks4" size="15">
+<label> totalmarks: </label>    
+<input type="text" name="totalmarks4" placeholder="totalmarks4" size="15">    
+ <br> 
+ 
+ 
+ <label> subjectname: </label>   
+<input type="text" name="subjectname5" placeholder="subjectname5" size="15">   
+<label> marks: </label>    
+<input type="text" name="marks5" placeholder="marks5" size="15">
+<label> totalmarks: </label>    
+<input type="text" name="totalmarks5" placeholder="totalmarks5" size="15">    
+ <br> 
+ 
+ <button type="submit" value="Save">Submit</button>    
+</form>  
+</body>  
+</html>  

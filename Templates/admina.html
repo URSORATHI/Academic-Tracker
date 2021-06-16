@@ -1,0 +1,398 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+</head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+<!-- Icons -->
+<link rel="stylesheet" href="{% static 'css/nucleo.css' %}" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/argon.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'vendor/nucleo/css/nucleo.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'vendor/@fortawesome/fontawesome-free/css/all.min.css' %}" type="text/css">
+<!-- Sidenav -->
+<!-- Sidenav -->
+<style>
+      .padd{
+        padding: 35px 50px 25px 50px;
+      }
+    </style>
+  </head>
+  <body>
+  
+  {% block content%}
+  <!-- Sidenav -->
+  <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+    <div class="scrollbar-inner">
+      <!-- Brand -->
+      <div class="sidenav-header  align-items-center">
+
+        <font color="#525f7f" size="5">
+          <h>AcademicTracker</h>
+        </font>
+
+      </div>
+<div class="navbar-inner">
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+        <!-- Nav items -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="admina">
+              <i class="fa fa-address-card-o fa-3x" aria-hidden="true"></i>
+              <span class="nav-link-text">Dashboard</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            
+          </li>
+
+        </ul>
+
+        <hr class="my-3">
+      </div>
+    </div>
+
+          
+    </div>
+  </nav>
+  <!-- Main content -->
+  <div class="main-content" id="panel">
+    <!-- Topnav -->
+    <nav class="navbar navbar-top navbar-expand ">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+       
+          <!-- Navbar links -->
+          <ul class="navbar-nav align-items-center  ml-md-auto ">
+            <li class="nav-item d-xl-none">
+              <!-- Sidenav toggler -->
+              <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin"
+                data-target="#sidenav-main">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item d-sm-none">
+              <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
+                <i class="ni ni-zoom-split-in"></i>
+              </a>
+            </li>
+
+
+            <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+              <li class="nav-item dropdown">
+                <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">
+                  <div class="media align-items-center">
+                    <span class="avatar avatar-sm rounded-circle">
+                      <img alt="Image placeholder" src="{% static 'img/team-4.jpg' %}">
+                    </span>
+                    <div class="media-body  ml-2  d-none d-lg-block">
+                     {% for user in users %}
+                     {% if request.session.email == user.email1 %}
+                      <span class="mb-0 text-sm  font-weight-bold">{{user.username1}}</span>
+                    {% endif %}
+                    {% endfor %} 
+                    </div>
+                  </div>
+                </a>
+                <div class="dropdown-menu  dropdown-menu-right ">
+                  <div class="dropdown-header noti-title">
+                  <div class="dropdown-divider"></div>
+                  <a href="/logout" class="dropdown-item">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    <span>Logout</span>
+                  </a>
+                </div>
+              </li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Header -->
+    <!-- Header -->
+    <div class="header  pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+
+            </div>
+            
+            <div class="col-lg-6 col-5 text-right">
+            </div>
+        
+             <div>
+              <a href="#!" class="btn btn-sm btn-neutral" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false"><i class="fi-rr-doctor"></i>Add Subject Marks</a>
+      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-lg-left ">
+      
+      <form method="post"> 
+ {% csrf_token %}  
+
+<!--select name="{{student.name}}"  multiple required-->
+  {% for student in names %}
+   <input type="hidden" value="{{student.email}}" name="email">
+   <input type = "checkbox" name = "{{student.username}}" value = "{{student.id}}">{{student.username}}
+  {% endfor %}
+ 
+<!--option value="{{student.id}}">{{student.name}}</option-->   
+<!--/select--> 
+<!--input type="text" name="studentname" placeholder= "studentname" size="15" required /--><br>
+
+<label class="label-input100"> subjectname: </label>   
+<input  type="text" name="subjectname1" placeholder="subjectname1" size="15" required />    
+<label class="label-input100"> marks: </label>    
+<input  type="text" name="marks1" placeholder="marks1" size="15"required />
+<label class="label-input100"> totalmarks: </label>    
+<input  type="text" name="totalmarks1" placeholder="totalmarks1" size="15"required />   
+ <br> 
+ 
+<label class="label-input100"> subjectname: </label>   
+<input type="text" name="subjectname2" placeholder="subjectname2" size="15" >   
+<label class="label-input100"> marks: </label>    
+<input type="text" name="marks2" placeholder="marks2" size="15">
+<label class="label-input100"> totalmarks: </label>    
+<input type="text" name="totalmarks2" placeholder="totalmarks2" size="15">    
+ <br> 
+ 
+ <label class="label-input100"> subjectname: </label>   
+<input type="text" name="subjectname3" placeholder="subjectname3" size="15" >   
+<label class="label-input100"> marks: </label>    
+<input type="text" name="marks3" placeholder="marks3" size="15">   
+<label class="label-input100"> totalmarks: </label>    
+<input type="text" name="totalmarks3" placeholder="totalmarks3" size="15"> 
+ <br> 
+ 
+<label class="label-input100"> subjectname: </label>   
+<input type="text" name="subjectname4" placeholder="subjectname4" size="15">   
+<label class="label-input100"> marks: </label>    
+<input type="text" name="marks4" placeholder="marks4" size="15">
+<label class="label-input100"> totalmarks: </label>    
+<input type="text" name="totalmarks4" placeholder="totalmarks4" size="15">    
+ <br> 
+ 
+ 
+ <label class="label-input100"> subjectname: </label>   
+<input type="text" name="subjectname5" placeholder="subjectname5" size="15">   
+<label class="label-input100"> marks: </label>    
+<input type="text" name="marks5" placeholder="marks5" size="15">
+<label class="label-input100"> totalmarks: </label>    
+<input type="text" name="totalmarks5" placeholder="totalmarks5" size="15">    
+ <br> 
+ 
+ <button class="contact100-form-btn" type="submit" value="Save">Submit</button>    
+</form>  
+
+</div>
+</div>
+ 
+           <div>
+              <a href="#!" class="btn btn-sm btn-neutral" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false"><i class="fi-rr-doctor"></i>Add Subject</a>
+              <div class="dropdown-menu dropdown-menu-lg  dropdown-menu-left ">
+                <form class="contact100-form validate-form" id="csv" method="POST" enctype="multipart/form-data">
+                 {% csrf_token %}
+                  <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Subject name is required">
+                    <span class="label-input100">Subject Name</span>
+                    <input class="input" type="text" name="subjectname" id="c">
+                    <span class="focus-input100"></span>
+                  </div>
+                                   
+                                        <input type="file" name="myfile" id="up">
+                                   
+                            
+                  	
+                  <div class="container-contact100-form-btn justify-content-center" style="padding: 0;">
+                
+                  	
+                    <button class="contact100-form-btn" stype="submit" onclick="fnc()">
+                   
+                      <span>
+                        Submit
+                        <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                      </span>
+                    </button>
+                  </div>
+                 </form>
+    
+
+
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-xl-3 col-md-6">
+            <div class="card card-stats">
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card body -->
+      <div class="card-body">
+
+      </div>
+      <!-- Page content -->
+      <div class="container-fluid mt--6">
+        <!-- Dark table -->
+        <div class="row">
+          <div class="col">
+            <div class="card bg-default shadow">
+              <div class="card-header bg-transparent border-0">
+                <h3 class="text-white mb-0">Subject </h3>
+              </div>
+              <div class="table-responsive">
+                <table class="table align-items-center table-flush" style="color: white">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col" class="sort" data-sort="name">Subject Name</th>
+                      <th></th>
+                      <th scope="col" class="sort" data-sort="completion">Total Lectures</th>
+                       <th scope="col" class="sort" data-sort="budget"></th>
+                      <!-- <th></th> -->
+                    </tr>
+                  </thead>
+                  
+                  <thead class="thead-dark">
+                    <table class="table align-items-center table-flush" style="color: white" id="thistable">
+                  </thead>
+
+                  <tbody class="list">
+                  {% for subject in subjects %}
+                  
+                      {% if request.session.email == subject.email %}
+                     
+                    <tr>
+                    <th scope="row">
+                      <div class="media align-items-center">
+                        
+                        <div class="media-body">
+                          <span class="name mb-0 text-sm">{{subject.subjectname}}</span>
+                       </div>
+                      </div>
+                    </th>
+                    <td class="budget">
+                     {{subject.total_lectures}}
+                    </td>
+                    <td class="budget">  
+                    </td>
+                   
+                  </tr>
+                  
+                  
+                     {% endif %}
+                     {% endfor %}
+                     
+                  </tbody>
+
+                    </table>
+                    
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Argon Scripts -->
+      <!-- Core -->
+<script type="text/javascript">
+function fnc(){
+  if(window.location.href == linkout)
+{
+    location.reload();
+}
+else
+{
+    window.location.href = linkout;
+}
+ return false;
+
+}     
+function myFunction() {
+  var table = document.getElementById("thistable");
+  var row = table.insertRow(0);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  cell1.innerHTML = document.getElementById("c").value;
+  var ele = document.getElementById("up").value;
+  if (ele){
+  cell2.innerHTML = "Uploaded";
+  }
+  else{
+    cell2.innerHTML = "Not Uploaded";
+  }
+  return false;
+  location.href="/index";
+  }
+  
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function lookup(endpoint,formData,POST,callback) {
+    const xhr = new XMLHttpRequest()
+    const csrftoken = getCookie('csrftoken');
+    //xhr.responseType = 'json'
+    xhr.open(POST,endpoint)
+    //xhr.setRequestHeader('Content-Type','application/json')
+    xhr.setRequestHeader("HTTP_X_REQUESTED_WITH","XMLHttpRequest")
+    xhr.setRequestHeader("X-Requested-With","XMLHttpRequest")
+    xhr.setRequestHeader('X-CSRFToken',csrftoken)
+    xhr.onload = () =>{
+        console.log(xhr.response,xhr.status)
+        callback(xhr.response,xhr.status)
+    }
+    xhr.send(formData)
+}
+
+document.getElementById("csv").addEventListener("submit", (event)=>{
+    event.preventDefault()
+    const form = new FormData(event.target)
+    lookup('/index',form,'POST',(response,status)=>{
+        //window.location.href = "
+    })
+}
+)
+
+</script>
+            
+    
+</html>
+ <script src="{% static 'js/vendor/jquery/dist/jquery.min.js' %}"></script>
+      <script src="{% static 'js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'js/vendor/js-cookie/js.cookie.js' %}"></script>
+      <script src="{% static 'js/vendor/jquery.scrollbar/jquery.scrollbar.min.js' %}"></script>
+      <script src="{% static 'js/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js' %}"></script>
+   
+      <!-- Optional JS -->
+      <script src="{% static 'js/vendor/chart.js/dist/Chart.min.js' %}"></script>
+      <script src="{% static 'js/vendor/chart.js/dist/Chart.extension.js' %}"></script>
+<script src="{% static 'js/argon.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+{% endblock content%}

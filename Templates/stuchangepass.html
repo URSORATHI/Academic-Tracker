@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Change password</title>
+<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<div class="container" id="container">
+<div class="form-container sign-in-container">
+	<form method="POST" action="/stuchangepass">
+	{% csrf_token %}
+	<div>
+{% for message in messages  %}
+<h2>{{message}}</h2>
+{% endfor %}
+</div>
+	<h1>Student</h1>
+    <br>
+		<h2>Change password</h2>  
+	<input type="email" name="email1" placeholder="Email">
+	<input type="password" name="password1" placeholder="Password" >
+    <input type="password" name="newpassword" placeholder="New Password" >
+	<button type="submit" value ="Submit">Submit</button>
+	</form>
+</div>
+
+<div class="overlay-container">
+	<div class="overlay">
+		<div class="overlay-panel overlay-right">
+		<h3>Academic Tracker</h3>
+		<br>
+			<h4>Welcome!</h4>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+</html>
